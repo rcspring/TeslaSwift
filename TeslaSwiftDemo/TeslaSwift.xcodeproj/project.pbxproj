@@ -142,6 +142,8 @@
 		CFF06D031FB639B8003320E3 /* StreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF06D021FB639B8003320E3 /* StreamViewController.swift */; };
 		CFF06D051FB63CF9003320E3 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = CFF06D041FB63CF9003320E3 /* Podfile.lock */; };
 		CFF5CFFF1EABD1AB00655B81 /* StreamEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D161B9F1E9DC805001C89ED /* StreamEvent.swift */; };
+		EC20C2F9267D5B32001BFD01 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC20C2F8267D5B32001BFD01 /* Stuff.swift */; };
+		EC20C2FA267D5B32001BFD01 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC20C2F8267D5B32001BFD01 /* Stuff.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,6 +275,7 @@
 		CFF06D021FB639B8003320E3 /* StreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewController.swift; sourceTree = "<group>"; };
 		CFF06D041FB63CF9003320E3 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		E6CE3C92808A0629E156F4D1 /* Pods-TeslaSwift-TeslaSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeslaSwift-TeslaSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeslaSwift-TeslaSwiftTests/Pods-TeslaSwift-TeslaSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC20C2F8267D5B32001BFD01 /* Stuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stuff.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +313,7 @@
 				CFA984F81CC2545600B23C7D /* TeslaEndpoint.swift */,
 				CF713547256AA59D00988AFE /* TeslaWebLoginViewContoller.swift */,
 				1A9B1B1C22DA40AF0014CE17 /* Model */,
+				EC20C2F8267D5B32001BFD01 /* Stuff.swift */,
 			);
 			path = TeslaSwift;
 			sourceTree = "<group>";
@@ -787,6 +791,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC20C2F9267D5B32001BFD01 /* Stuff.swift in Sources */,
 				CF0D2F2F1D95A4A900E5A304 /* GenericResponse.swift in Sources */,
 				CFC819A41DBBA2EA00A8E47B /* VehicleViewController.swift in Sources */,
 				CF48FA9B1C8B09C500B1DA93 /* LoginViewController.swift in Sources */,
@@ -850,6 +855,7 @@
 				CF0D2F261D95A4A900E5A304 /* Authentication.swift in Sources */,
 				CF5FF50E21AADC3E007B6306 /* ShareToVehicleOptions.swift in Sources */,
 				CF0D2F301D95A4A900E5A304 /* GenericResponse.swift in Sources */,
+				EC20C2FA267D5B32001BFD01 /* Stuff.swift in Sources */,
 				CFEAF13E1EACEE550003FA6E /* TeslaStreaming.swift in Sources */,
 				CF0D2F2E1D95A4A900E5A304 /* DriveState.swift in Sources */,
 				CF1BD59A1DD505EF00E4C493 /* SetSunRoofCommandOptions.swift in Sources */,
@@ -1034,7 +1040,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RMBS8HAUHZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = joao.TeslaSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1050,7 +1056,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RMBS8HAUHZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = joao.TeslaSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
