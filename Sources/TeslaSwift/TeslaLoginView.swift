@@ -9,11 +9,12 @@
 import SwiftUI
 import WebKit
 
-public struct TeslLoginView: UIViewRepresentable {
-    public func makeCoordinator() -> WebCoordinator {
-        return WebCoordinator()
-    }
+public struct TeslaLoginView: UIViewRepresentable {
+    @Environment(\.presentationMode) var mode
     
+    public func makeCoordinator() -> WebCoordinator {
+        return WebCoordinator(presentation: mode)
+    }
     
     private let initial: URL
     
@@ -23,6 +24,7 @@ public struct TeslLoginView: UIViewRepresentable {
     
     public func makeUIView(context: Context) -> WKWebView {
         let WKWebview = WKWebView(frame: .zero)
+        WKWebview.navigationDelegate = context.coordinator
         return WKWebview
     }
     
@@ -35,13 +37,32 @@ public struct TeslLoginView: UIViewRepresentable {
         
         uiView.load(URLRequest(url: initial))
     }
+}
+
+public class WebCoordinator: NSObject, WKNavigationDelegate {
+    private let presentation: Binding<PresentationMode>
     
-    public class WebCoordinator: NSObject, WKNavigationDelegate {
-        public func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-            print("Did Receive Navigation \(navigation)")
-        }
+    public init(presentation: Binding<PresentationMode>) {
+        self.presentation = presentation
     }
-  
+    
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        presentation.wrappedValue.dismiss()
+        print("RCS Navigation \(navigationAction)")
+//        if let url = navigationAction.request.url, url.absoluteString.starts(with: "https://auth.tesla.com/void/callback")  {
+//            decisionHandler(.cancel)
+////            self.dismiss(animated: true, completion: nil)
+////            self.result?(Result.success(url))
+//        } else {
+            decisionHandler(.allow)
+//        }
+    }
+
+    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        // Handle failure here
+//        self.result?(Result.failure(TeslaError.authenticationFailed))
+//        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 
