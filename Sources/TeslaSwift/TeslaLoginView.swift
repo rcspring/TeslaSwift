@@ -47,12 +47,13 @@ public class WebCoordinator: NSObject, WKNavigationDelegate {
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-    
-        print("RCS Navigation \(navigationAction)")
+
         if let url = navigationAction.request.url, url.absoluteString.starts(with: "https://auth.tesla.com/void/callback")  {
             decisionHandler(.cancel)
             presentation.wrappedValue.dismiss()
-            model.handleCode(url)
+            async {
+                try? await model.handleCode(url)
+            }
         } else {
             decisionHandler(.allow)
         }
@@ -60,7 +61,6 @@ public class WebCoordinator: NSObject, WKNavigationDelegate {
 
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         // Handle failure here
-//        self.result?(Result.failure(TeslaError.authenticationFailed))
         presentation.wrappedValue.dismiss()
     }
 }
