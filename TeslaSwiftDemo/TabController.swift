@@ -8,4 +8,14 @@
 
 import UIKit
 
-class TabController: UITabBarController {}
+class TabController: UITabBarController {
+    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//
+//        if (!api.isAuthenticated) {
+//
+//            performSegue(withIdentifier: "loginSegue", sender: self)
+//
+//        }
+    }
+}

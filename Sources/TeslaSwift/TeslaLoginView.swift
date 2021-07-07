@@ -11,7 +11,7 @@ import WebKit
 
 public struct TeslaLoginView: UIViewRepresentable {
     @Environment(\.presentationMode) var mode
-    let model: TeslaModel
+    let model: TeslaBase
     
     public func makeCoordinator() -> WebCoordinator {
         return WebCoordinator(presentation: mode, model: model)
@@ -19,7 +19,7 @@ public struct TeslaLoginView: UIViewRepresentable {
     
     private let initial: URL
     
-    init(url: URL, model: TeslaModel) {
+    init(url: URL, model: TeslaBase) {
         self.initial = url
         self.model = model
     }
@@ -39,9 +39,9 @@ public struct TeslaLoginView: UIViewRepresentable {
 
 public class WebCoordinator: NSObject, WKNavigationDelegate {
     private let presentation: Binding<PresentationMode>
-    private let model: TeslaModel
+    private let model: TeslaBase
     
-    init(presentation: Binding<PresentationMode>, model: TeslaModel) {
+    init(presentation: Binding<PresentationMode>, model: TeslaBase) {
         self.presentation = presentation
         self.model = model
     }

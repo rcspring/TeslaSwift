@@ -940,7 +940,6 @@ extension TeslaSwift {
         let request = prepareRequest(endpoint, body: body)
         let debugEnabled = debuggingEnabled
         let task = URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
-            guard let self = self else { completion(Result.failure(TeslaError.internalError)); return }
             guard error == nil else { completion(Result.failure(error!)); return }
             guard let httpResponse = response as? HTTPURLResponse else { completion(Result.failure(TeslaError.failedToParseData)) ;return }
 

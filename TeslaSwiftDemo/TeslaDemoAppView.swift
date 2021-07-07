@@ -10,22 +10,11 @@ import SwiftUI
 
 struct TeslaDemoAppView: View {
     @State var showingThing = true
-    @StateObject var model = TeslaModel.shared
+    @StateObject var model = TeslaBase.shared
     
     var body: some View {
         if model.isAuthenticated {
-            List(model.vehicles) { vehicle in
-                Text("Vehicle \(vehicle.displayName ?? "none")")
-            }
-            .onAppear {
-                async {
-                    do {
-                        try await model.getVehicles()
-                    } catch {
-                        print("Have error \(error)")
-                    }
-                }
-            }
+            TeslaDemoAppVehiclesView()
         } else {
             Text(model.isAuthenticated ? "Logged In" : "Logged Out")
                 .sheet(isPresented: $showingThing, onDismiss: nil) {

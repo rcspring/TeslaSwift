@@ -10,12 +10,12 @@ import Foundation
 import Combine
 
 @MainActor
-final class TeslaModel: ObservableObject {
+final class TeslaBase: ObservableObject {
     public var isAuthenticated: Bool {
         return token != nil && (token?.isValid ?? false)
     }
     
-    static let shared = TeslaModel()
+    static let shared = TeslaBase()
     private var nullBody = ""
     var useMockServer = false
     
@@ -28,7 +28,7 @@ final class TeslaModel: ObservableObject {
     }
 }
 
-extension TeslaModel {
+extension TeslaBase {
     
     private func checkToken() -> Bool {
         if let token = self.token {
@@ -126,7 +126,13 @@ extension TeslaModel {
         self.token = token
     }
     
-    func request<ReturnType: Decodable, BodyType: Encodable>(_ endpoint: Endpoint, body: BodyType) async throws ->
+    public func request<ReturnType: Decodable>(_ endpoint: Endpoint) async throws -> [ReturnType] {
+        let result: ArrayResponse<ReturnType> = try await request(endpoint, body: nullBody)
+        
+        return result.response
+    }
+    
+    public func request<ReturnType: Decodable, BodyType: Encodable>(_ endpoint: Endpoint, body: BodyType) async throws ->
     ReturnType {
         let request = prepareRequest(endpoint, body: body)
         
