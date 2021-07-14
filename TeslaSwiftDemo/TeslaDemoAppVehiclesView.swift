@@ -13,8 +13,11 @@ struct TeslaDemoAppVehiclesView: View {
     
     var body: some View {
         List(model.vehicles) { vehicle in
-            Text("Vehicle \(vehicle.displayName ?? "none")")
+            NavigationLink(vehicle.displayName ?? "none") {
+                TeslaVehicleView(id: vehicle.idInt ?? -1)
+            }
         }
+        .navigationTitle("Vehicles")
     }
 }
 

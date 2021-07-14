@@ -14,7 +14,9 @@ struct TeslaDemoAppView: View {
     
     var body: some View {
         if model.isAuthenticated {
-            TeslaDemoAppVehiclesView()
+            NavigationView {
+                TeslaDemoAppVehiclesView()
+            }
         } else {
             Text(model.isAuthenticated ? "Logged In" : "Logged Out")
                 .sheet(isPresented: $showingThing, onDismiss: nil) {

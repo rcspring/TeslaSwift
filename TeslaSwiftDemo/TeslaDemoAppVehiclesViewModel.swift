@@ -12,7 +12,8 @@ final class TeslaDemoAppVehiclesViewModel: ObservableObject {
     @Published var vehicles: [Vehicle] = []
     
     init() {
-        async {
+        
+        Task {
             do {
                 vehicles = try await base.request(.vehicles)
             } catch {

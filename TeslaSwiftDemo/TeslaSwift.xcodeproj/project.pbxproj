@@ -146,6 +146,7 @@
 		EC20C37B2680D680001BFD01 /* TeslaLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC20C3792680D680001BFD01 /* TeslaLoginView.swift */; };
 		EC8FC5D3269530B800A11946 /* TeslaDemoAppVehiclesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8FC5D2269530B800A11946 /* TeslaDemoAppVehiclesViewModel.swift */; };
 		EC8FC5D52695333900A11946 /* TeslaDemoAppVehiclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8FC5D42695333900A11946 /* TeslaDemoAppVehiclesView.swift */; };
+		EC8FC5D72696579100A11946 /* TeslaVehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8FC5D62696579100A11946 /* TeslaVehicleView.swift */; };
 		EC919E56268253C9009CBC57 /* TeslaDemoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC919E55268253C9009CBC57 /* TeslaDemoAppView.swift */; };
 		EC919E58268255FE009CBC57 /* TeslaBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC919E57268255FE009CBC57 /* TeslaBase.swift */; };
 /* End PBXBuildFile section */
@@ -282,6 +283,7 @@
 		EC20C3792680D680001BFD01 /* TeslaLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaLoginView.swift; sourceTree = "<group>"; };
 		EC8FC5D2269530B800A11946 /* TeslaDemoAppVehiclesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaDemoAppVehiclesViewModel.swift; sourceTree = "<group>"; };
 		EC8FC5D42695333900A11946 /* TeslaDemoAppVehiclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaDemoAppVehiclesView.swift; sourceTree = "<group>"; };
+		EC8FC5D62696579100A11946 /* TeslaVehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaVehicleView.swift; sourceTree = "<group>"; };
 		EC919E55268253C9009CBC57 /* TeslaDemoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaDemoAppView.swift; sourceTree = "<group>"; };
 		EC919E57268255FE009CBC57 /* TeslaBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -519,6 +521,7 @@
 				EC919E55268253C9009CBC57 /* TeslaDemoAppView.swift */,
 				EC8FC5D42695333900A11946 /* TeslaDemoAppVehiclesView.swift */,
 				EC8FC5D2269530B800A11946 /* TeslaDemoAppVehiclesViewModel.swift */,
+				EC8FC5D62696579100A11946 /* TeslaVehicleView.swift */,
 				CFC819A31DBBA2EA00A8E47B /* VehicleViewController.swift */,
 				CFD2E7CA1C8A13D60005E882 /* Main.storyboard */,
 				CFF06D021FB639B8003320E3 /* StreamViewController.swift */,
@@ -848,6 +851,7 @@
 				CF713548256AA59D00988AFE /* TeslaWebLoginViewContoller.swift in Sources */,
 				650A507D218ABAEF0068EC13 /* SoftwareUpdate.swift in Sources */,
 				CFAE278F1F76644300D28079 /* Codable+JSONString.swift in Sources */,
+				EC8FC5D72696579100A11946 /* TeslaVehicleView.swift in Sources */,
 				CF0D2F331D95A4A900E5A304 /* OpenTrunkOptions.swift in Sources */,
 				EC8FC5D52695333900A11946 /* TeslaDemoAppVehiclesView.swift in Sources */,
 				1AA73E86235B37560088D66A /* HomeLinkCommandOptions.swift in Sources */,

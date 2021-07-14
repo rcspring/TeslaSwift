@@ -51,7 +51,7 @@ public class WebCoordinator: NSObject, WKNavigationDelegate {
         if let url = navigationAction.request.url, url.absoluteString.starts(with: "https://auth.tesla.com/void/callback")  {
             decisionHandler(.cancel)
             presentation.wrappedValue.dismiss()
-            async {
+            Task {
                 try? await model.handleCode(url)
             }
         } else {
