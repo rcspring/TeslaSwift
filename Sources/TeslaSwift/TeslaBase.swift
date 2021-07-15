@@ -9,15 +9,18 @@
 import Foundation
 import Combine
 
+public enum OperationType {
+    case vehicles
+}
+
 @MainActor
-final class TeslaBase: ObservableObject {
+public final class TeslaBase: ObservableObject {
     public var isAuthenticated: Bool {
         return token != nil && (token?.isValid ?? false)
     }
     
-    static let shared = TeslaBase()
+    public static let shared = TeslaBase()
     private var nullBody = ""
-    var useMockServer = false
     
     @Published fileprivate(set) var token: AuthToken?
     @Published fileprivate(set) var vehicles: [Vehicle] = []
@@ -38,11 +41,11 @@ extension TeslaBase {
         }
     }
     
-    public func getVehicles() async throws {
-        try await checkAuthentication()
-        let result: ArrayResponse<Vehicle> = try await request(.vehicles, body: nullBody)
-        self.vehicles = result.response
-    }
+//    public func getVehicles() async throws {
+//        try await checkAuthentication()
+//        let result: ArrayResponse<Vehicle> = try await request(.vehicles, body: "")
+//        self.vehicles = result.response
+//    }
     
     @discardableResult
     private func checkAuthentication() async throws -> AuthToken {
@@ -126,13 +129,20 @@ extension TeslaBase {
         self.token = token
     }
     
-    public func request<ReturnType: Decodable>(_ endpoint: Endpoint) async throws -> [ReturnType] {
+    public func request<ReturnType: Decodable>(_ operation: OperationType) async throws -> [ReturnType] {
+        switch operation {
+        case .vehicles:
+            return try await request(Endpoint.vehicles)
+        }
+    }
+    
+    private func request<ReturnType: Decodable>(_ endpoint: Endpoint) async throws -> [ReturnType] {
         let result: ArrayResponse<ReturnType> = try await request(endpoint, body: nullBody)
         
         return result.response
     }
     
-    public func request<ReturnType: Decodable, BodyType: Encodable>(_ endpoint: Endpoint, body: BodyType) async throws ->
+    private func request<ReturnType: Decodable, BodyType: Encodable>(_ endpoint: Endpoint, body: BodyType) async throws ->
     ReturnType {
         let request = prepareRequest(endpoint, body: body)
         
@@ -156,7 +166,7 @@ extension TeslaBase {
     }
         
     func prepareRequest<BodyType: Encodable>(_ endpoint: Endpoint, body: BodyType) -> URLRequest {
-        var urlComponents = URLComponents(url: URL(string: endpoint.baseURL(useMockServer))!, resolvingAgainstBaseURL: true)
+        var urlComponents = URLComponents(url: URL(string: endpoint.baseURL(false))!, resolvingAgainstBaseURL: true)
         urlComponents?.path = endpoint.path
         urlComponents?.queryItems = endpoint.queryParameters
         var request = URLRequest(url: urlComponents!.url!)
