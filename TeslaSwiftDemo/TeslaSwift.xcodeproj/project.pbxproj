@@ -128,6 +128,7 @@
 		EC8FC5D72696579100A11946 /* TeslaVehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8FC5D62696579100A11946 /* TeslaVehicleView.swift */; };
 		EC919E56268253C9009CBC57 /* TeslaDemoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC919E55268253C9009CBC57 /* TeslaDemoAppView.swift */; };
 		EC919E58268255FE009CBC57 /* TeslaBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC919E57268255FE009CBC57 /* TeslaBase.swift */; };
+		ECD4FFAC26A9B6A600643CE1 /* TeslaBase+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4FFAB26A9B6A600643CE1 /* TeslaBase+SwiftUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +246,7 @@
 		EC8FC5D62696579100A11946 /* TeslaVehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaVehicleView.swift; sourceTree = "<group>"; };
 		EC919E55268253C9009CBC57 /* TeslaDemoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaDemoAppView.swift; sourceTree = "<group>"; };
 		EC919E57268255FE009CBC57 /* TeslaBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaBase.swift; sourceTree = "<group>"; };
+		ECD4FFAB26A9B6A600643CE1 /* TeslaBase+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeslaBase+SwiftUI.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,11 +272,12 @@
 			isa = PBXGroup;
 			children = (
 				CFD2E7E71C8A13F20005E882 /* TeslaSwift.swift */,
+				ECD4FFAB26A9B6A600643CE1 /* TeslaBase+SwiftUI.swift */,
 				CFA984F81CC2545600B23C7D /* TeslaEndpoint.swift */,
 				CF713547256AA59D00988AFE /* TeslaWebLoginViewContoller.swift */,
 				EC20C3792680D680001BFD01 /* TeslaLoginView.swift */,
-				1A9B1B1C22DA40AF0014CE17 /* Model */,
 				EC919E57268255FE009CBC57 /* TeslaBase.swift */,
+				1A9B1B1C22DA40AF0014CE17 /* Model */,
 			);
 			path = TeslaSwift;
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				CF1BD5931DD5041800E4C493 /* ChargeLimitPercentageCommandOptions.swift in Sources */,
 				CFB5D7B71E66088F003EA1EF /* ErrorMessage.swift in Sources */,
 				65F055182173DB3D00BE3BE5 /* ShareToVehicleOptions.swift in Sources */,
+				ECD4FFAC26A9B6A600643CE1 /* TeslaBase+SwiftUI.swift in Sources */,
 				176F073B2219E25A000877D7 /* RemoteSeatHeaterRequestOptions.swift in Sources */,
 				1759B7422228D3210032EB4C /* SentryModeCommandOptions.swift in Sources */,
 				170D32D322D0EBCD00B6A51A /* NearbyChargingSites.swift in Sources */,
