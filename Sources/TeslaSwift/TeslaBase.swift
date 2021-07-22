@@ -11,6 +11,16 @@ import Combine
 
 public enum OperationType {
     case vehicles
+    case charge(String)
+}
+
+extension OperationType {
+    var type: Any.Type {
+        switch self {
+        case .vehicles: return [Vehicle].self
+        case .charge(_): return ChargeState.self
+        }
+    }
 }
 
 @MainActor
@@ -40,12 +50,6 @@ extension TeslaBase {
             return false
         }
     }
-    
-//    public func getVehicles() async throws {
-//        try await checkAuthentication()
-//        let result: ArrayResponse<Vehicle> = try await request(.vehicles, body: "")
-//        self.vehicles = result.response
-//    }
     
     @discardableResult
     private func checkAuthentication() async throws -> AuthToken {
@@ -112,7 +116,6 @@ extension TeslaBase {
         if let queryItems = urlComponents?.queryItems {
             for queryItem in queryItems {
                 if queryItem.name == "code", let code = queryItem.value {
-                    print("Have code \(code)")
                     try await self.getAuthenticationTokenForWeb(code: code)
                     return
                 }
@@ -121,26 +124,25 @@ extension TeslaBase {
     }
     
     private func getAuthenticationTokenForWeb(code: String) async throws {
-
         let body = AuthTokenRequestWeb(code: code)
-
         let token: AuthToken = try await request(.oAuth2Token, body: body)
         
         self.token = token
     }
     
-    public func request<ReturnType: Decodable>(_ operation: OperationType) async throws -> [ReturnType] {
+    public func request<ReturnType: Decodable>(_ operation: OperationType) async throws -> ReturnType {
         switch operation {
-        case .vehicles:
-            return try await request(Endpoint.vehicles)
+        case .vehicles:  return try await singleRequest(Endpoint.vehicles)
+        case .charge(let idString): return try await singleRequest(Endpoint.chargeState(vehicleID: idString))
         }
     }
-    
-    private func request<ReturnType: Decodable>(_ endpoint: Endpoint) async throws -> [ReturnType] {
-        let result: ArrayResponse<ReturnType> = try await request(endpoint, body: nullBody)
+        
+    private func singleRequest<ReturnType: Decodable>(_ endpoint: Endpoint) async throws -> ReturnType {
+        let result: Response<ReturnType> = try await request(endpoint, body: nullBody)
         
         return result.response
     }
+    
     
     private func request<ReturnType: Decodable, BodyType: Encodable>(_ endpoint: Endpoint, body: BodyType) async throws ->
     ReturnType {
@@ -189,8 +191,4 @@ extension TeslaBase {
     }
 
 
-}
-
-extension Vehicle: Identifiable {
-    
 }

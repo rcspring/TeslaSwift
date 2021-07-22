@@ -21,6 +21,10 @@ struct TeslaDemoAppVehiclesView: View {
     }
 }
 
+extension Vehicle: Identifiable {
+    
+}
+
 //struct TeslaDemoAppVehiclesView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        TeslaDemoAppVehiclesView()
