@@ -14,7 +14,7 @@ struct TeslaBaseKey: EnvironmentKey {
 }
 
 extension EnvironmentValues {
-    var teslaBase: TeslaBase {
+    public var teslaBase: TeslaBase {
         get { self[TeslaBaseKey.self] }
         set { self[TeslaBaseKey.self] = newValue }
     }
