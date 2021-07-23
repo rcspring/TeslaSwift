@@ -12,15 +12,7 @@ import Combine
 public enum OperationType {
     case vehicles
     case charge(String)
-}
-
-extension OperationType {
-    var type: Any.Type {
-        switch self {
-        case .vehicles: return [Vehicle].self
-        case .charge(_): return ChargeState.self
-        }
-    }
+    case wakeup(String)
 }
 
 @MainActor
@@ -33,7 +25,6 @@ public final class TeslaBase: ObservableObject {
     private var nullBody = ""
     
     @Published fileprivate(set) var token: AuthToken?
-    @Published fileprivate(set) var vehicles: [Vehicle] = []
     @Published fileprivate(set) var error: Error? {
         didSet {
             token = nil
@@ -133,7 +124,8 @@ extension TeslaBase {
     public func request<ReturnType: Decodable>(_ operation: OperationType) async throws -> ReturnType {
         switch operation {
         case .vehicles:  return try await singleRequest(Endpoint.vehicles)
-        case .charge(let idString): return try await singleRequest(Endpoint.chargeState(vehicleID: idString))
+        case .charge(let id): return try await singleRequest(Endpoint.chargeState(vehicleID: id))
+        case .wakeup(let id): return try await singleRequest(Endpoint.wakeUp(vehicleID: id))
         }
     }
         
@@ -160,6 +152,9 @@ extension TeslaBase {
             } catch {
                 throw error
             }
+        case 401: throw TeslaError.requestUnauthorized
+        case 404: throw TeslaError.requestNotFound
+        case 408: throw TeslaError.requestTimedOut
         default:
             throw TeslaError.authenticationFailed
             

@@ -145,6 +145,9 @@ public enum TeslaError: Error, Equatable {
 	case invalidOptionsForCommand
 	case failedToParseData
     case failedToReloadVehicle
+    case requestTimedOut
+    case requestUnauthorized
+    case requestNotFound
     case internalError
 }
 
