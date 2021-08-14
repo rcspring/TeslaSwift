@@ -13,6 +13,7 @@ public enum OperationType {
     case vehicles
     case charge(String)
     case wakeup(String)
+    case command(String, VehicleCommand)
 }
 
 @MainActor
@@ -126,6 +127,7 @@ extension TeslaBase {
         case .vehicles:  return try await singleRequest(Endpoint.vehicles)
         case .charge(let id): return try await singleRequest(Endpoint.chargeState(vehicleID: id))
         case .wakeup(let id): return try await singleRequest(Endpoint.wakeUp(vehicleID: id))
+        case .command(let id, let command): return try await singleRequest(Endpoint.command(vehicleID: id, command: command))
         }
     }
         
